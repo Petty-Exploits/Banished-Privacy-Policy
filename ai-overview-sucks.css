@@ -1,0 +1,48 @@
+/* Target the main wrapper for the AI Overview section */
+div[data-subtree="aimc"],
+div[data-subtree="aimhl"],
+div[data-subtree="aimfl"],
+div[data-subtree="mfc"],
+/* Target the specific container for the overview cards */
+.Pqkn2e.rNSxBe,
+/* Target the synthesized text and source links */
+.FkX2oe,
+.mZJni,
+.QzGOQd,
+/* Target the "How AI Overviews Work" and "Benefits" headers/lists */
+.Y3BBE,
+.KsbFXc.U6u95,
+/* Target the generative AI "Source" link chips and related buttons */
+.uJ19be,
+.rBl3me,
+/* Target the specific WIZ controllers used for AI injection */
+[jscontroller="nfCumd"],
+[jscontroller="Aoijq"],
+[jscontroller="WOnCB"],
+[jscontroller="AkrxPe"],
+[jscontroller="qwbW4b"],
+/* Target the new outer containers from your latest HTML snippet */
+#B2Jtyd,
+.h7Tj7e,
+.D5ad8b,
+#m-x-content,
+div[jsname="V3qe9d"].s7d4ef.X6JNf.PFXse,
+div[jsname="txosbe"].OZ9ddf.WAUd4,
+div[data-async-type="folsrch"],
+div[data-streaming-container],
+.nk9vdc.GYaNDc,
+/* Target the "AI Overview" text, icons, and menus */
+.fWWlmf.JzISke,
+.Fzsovc.cwYVJe.RJPOee,
+[id*="atritem-"],
+/* Target loading shimmer and animation elements */
+.YOgmme,
+.WHDxde,
+.Ry8K5c {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+}
