@@ -1,4 +1,4 @@
-V208
+V210
 Banished - School Chromebook Proxy & Distraction Blocker
 
 A lightweight but powerful extension designed to help school IT departments enforce acceptable use policies on managed Chromebooks.
