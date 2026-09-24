@@ -1,68 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Banished Extension</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; }
-        h1, h2 { color: #1a73e8; }
-        ul { margin-bottom: 1.5em; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy – Banished Extension</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 20px; color: #111; }
+    h1, h2 { color: #1a73e8; }
+    ul { margin-bottom: 1.5em; }
+    code { background: #f1f3f4; padding: 0.1em 0.35em; border-radius: 4px; font-size: 0.95em; }
+  </style>
 </head>
 <body>
 
-    <h1>Privacy Policy</h1>
-    <p><strong>Last Updated:</strong> September 8, 2026</p>
+  <h1>Privacy Policy</h1>
+  <p><strong>Last updated:</strong> September 24, 2026</p>
 
-    <h2>1. Overview</h2>
-    <p>Banished is a content filtering and distraction blocker extension designed for school-managed Chromebooks. It helps school IT departments enforce acceptable use policies by detecting and blocking unauthorized proxy tools, circumvention sites, title spoofing, and other non-educational content.</p>
+  <h2>1. Overview</h2>
+  <p>
+    Banished is a content-filtering and policy-enforcement extension for
+    <strong>school-managed Chromebooks</strong> (and similar managed Chrome environments).
+    It helps school or district IT enforce acceptable-use rules by detecting and blocking
+    unauthorized proxies/circumvention tools, title spoofing, and other configured distractions.
+  </p>
+  <p>
+    The extension is intended to be installed and configured by the educational organization,
+    not by individual students.
+  </p>
 
-    <h2>2. Information We Collect</h2>
-    <p>Banished operates primarily on-device, with limited automated reporting strictly for domain safety intelligence:</p>
-    <ul>
-        <li><strong>Web History (Block Events Only):</strong> When a site policy violation, proxy detection, or blocked page event occurs, the extension logs the triggered URL, domain hostname, and violation category.</li>
-        <li><strong>No General Browsing Tracking:</strong> The extension does <em>not</em> track, log, or monitor general browsing activity or history on permitted websites.</li>
-        <li><strong>No Personally Identifiable Information (PII):</strong> We do <em>not</em> collect student names, email addresses, IP addresses, user IDs, device identifiers, or account credentials. All block telemetry is strictly anonymous.</li>
-        <li><strong>Local Configuration:</strong> Policy rules (allow/block lists, feature toggles, exempt domains) are read locally from Google Workspace Admin managed storage.</li>
-    </ul>
+  <h2>2. What we do <em>not</em> do</h2>
+  <ul>
+    <li>We do <strong>not</strong> record general browsing history on permitted sites.</li>
+    <li>We do <strong>not</strong> sell, lease, or share data with advertisers or data brokers.</li>
+    <li>We do <strong>not</strong> use extension data for advertising or marketing profiles.</li>
+    <li>We do <strong>not</strong> require students to create a Banished account.</li>
+  </ul>
 
-    <h2>3. Features and Data Processing</h2>
-    <p>The extension includes the following features:</p>
-    <ul>
-        <li>Advanced proxy and circumvention detection</li>
-        <li>Title spoofing protection</li>
-        <li>Admin-controlled allow/block lists</li>
-        <li>Custom block pages with school policy information</li>
-        <li>Optional clipboard protection and anti-AI copy features</li>
-        <li>Console-based proxy signature detection</li>
-        <li>Optional bookmark management tools</li>
-        <li>Automated threat reporting to aggregate domain safety blocklists</li>
-    </ul>
+  <h2>3. Information processed</h2>
+  <p>Processing depends on how the school configures the extension.</p>
 
-    <h2>4. Permissions Used</h2>
-    <ul>
-        <li><strong>declarativeNetRequest</strong>: For search result cleaning and blocking specific resources.</li>
-        <li><strong>storage</strong>: To read school-managed policy settings from Google Admin.</li>
-        <li><strong>tabs</strong>: To apply configuration updates and enforce blocking on open tabs.</li>
-        <li><strong>bookmarks</strong>: Used only if bookmark management features are enabled by the administrator.</li>
-        <li><strong>&lt;all_urls&gt;</strong>: Required to monitor page URLs and content for policy enforcement.</li>
-    </ul>
+  <h3>3.1 On-device enforcement (always)</h3>
+  <ul>
+    <li>Page URL/content signals needed to decide whether a page violates policy (proxies, patterns, titles, etc.).</li>
+    <li>Policy settings from <strong>Chrome managed storage</strong> (Google Admin JSON), such as allow/block lists and feature toggles.</li>
+    <li>Optional local features when enabled by policy (e.g. clipboard/anti-AI copy rules, bookmark cleanup, easter egg).</li>
+  </ul>
 
-    <h2>5. Data Sharing and Third Parties</h2>
-    <p>Logged block data (URLs and detection reasons) is transmitted to compile aggregate domain safety blocklists for participating K-12 school network administrators.</p>
-    <ul>
-        <li>Data is <strong>never</strong> sold, leased, or shared with third-party advertisers or data brokers.</li>
-        <li>Data is used solely for single-purpose security enforcement and threat intelligence in educational settings.</li>
-    </ul>
+  <h3>3.2 Block event reporting (when a block occurs)</h3>
+  <p>When a policy block is enforced, limited event metadata may be sent for enforcement and domain-safety curation:</p>
+  <ul>
+    <li>Sanitized URL (typically origin + path; query string, fragment, and credentials stripped where applicable)</li>
+    <li>Hostname</li>
+    <li>Violation category / detection reason</li>
+    <li>Optional short detail string related to the match</li>
+  </ul>
+  <p>
+    Schools may route these events to a district-controlled endpoint (for example a Google Form
+    and/or a district Apps Script backend). This is for <strong>blocked events only</strong>, not continuous monitoring of allowed sites.
+  </p>
 
-    <h2>6. Children's Privacy</h2>
-    <p>Banished is intended solely for use in K-12 educational environments on school-managed devices. It complies with COPPA, FERPA, and CIPA guidelines by strictly avoiding the collection of personal information from students.</p>
+  <h3>3.3 Optional remote policy &amp; fleet telemetry (off by default)</h3>
+  <p>
+    If the organization enables remote policy (managed setting such as
+    <code>enableRemotePolicy</code>), the extension may communicate with a
+    <strong>district-operated</strong> backend to:
+  </p>
+  <ul>
+    <li>Fetch policy configuration</li>
+    <li>Send periodic heartbeats (online status, extension version, platform, policy version)</li>
+    <li>Associate block events with a device for an admin “fleet” view</li>
+    <li>Register for push messages so policy can refresh more quickly (e.g. FCM), when configured</li>
+  </ul>
+  <p>In that mode, the following may be processed by the district backend:</p>
+  <ul>
+    <li><strong>Device identifier:</strong> a Banished-generated id stored in extension local storage (e.g. <code>DEV-…</code>), used to recognize the same browser install over time—not a government ID.</li>
+    <li><strong>Google account email (when available):</strong> read via Chrome Identity from the signed-in profile (typical on managed Workspace Chromebooks). If unavailable (e.g. some personal/dev profiles), the fleet view falls back to the device id only. Email is used to help IT identify which user/device is online or generating blocks—not for advertising.</li>
+    <li><strong>Push token</strong> (when push is configured), for policy refresh messages.</li>
+    <li><strong>Block telemetry</strong> tied to that device (time, type/reason, sanitized URL, optional details).</li>
+  </ul>
+  <p>
+    Turning remote policy <strong>off</strong> stops heartbeats, remote policy fetch, push registration use, and API block telemetry.
+    Managed-policy enforcement and any school-configured form reporting remain subject to the school’s setup.
+  </p>
 
-    <h2>7. Contact</h2>
-    <p>For questions about this privacy policy or the extension's operation, please contact your school or district IT administrator.</p>
+  <h2>4. Permissions (why they are requested)</h2>
+  <ul>
+    <li><strong>declarativeNetRequest</strong> – Apply network rules (e.g. search cleanup / selected resource blocking).</li>
+    <li><strong>storage</strong> – Read managed policy and store local state (device id, last policy cache, etc.).</li>
+    <li><strong>tabs</strong> – Apply config to open tabs and enforce blocking UX.</li>
+    <li><strong>bookmarks</strong> – Only if the administrator enables bookmark management/cleanup features.</li>
+    <li><strong>alarms</strong> – Schedule periodic policy sync / heartbeat when remote features are enabled.</li>
+    <li><strong>gcm</strong> – Optional push-based policy refresh when the district configures FCM.</li>
+    <li><strong>identity</strong> / <strong>identity.email</strong> – Optional: read signed-in profile email for fleet identification when remote admin features are enabled; falls back to device id if email is not available.</li>
+    <li><strong>Host access (&lt;all_urls&gt; or equivalent)</strong> – Required to evaluate pages for proxy/policy signals and enforce blocks.</li>
+  </ul>
 
-    <p>This privacy policy applies only to the Banished Chrome extension.</p>
+  <h2>5. Data sharing &amp; third parties</h2>
+  <ul>
+    <li>Block and fleet data are intended for the <strong>deploying school/district</strong> and tools they operate (e.g. Google Forms, Google Sheets, Apps Script, Firebase Cloud Messaging if they enable push).</li>
+    <li>Data is <strong>not</strong> sold or used for advertising.</li>
+    <li>Infrastructure providers used by the district (Google services, etc.) process data under the district’s configuration and those providers’ terms.</li>
+  </ul>
+
+  <h2>6. Children’s privacy (K–12)</h2>
+  <p>
+    Banished is aimed at educational institutions on managed devices. Schools should deploy it under their
+    COPPA/FERPA/CIPA (or local equivalent) obligations. The extension is designed to avoid general surveillance
+    of permitted activity and to limit reporting to policy-relevant block events and optional admin telemetry
+    controlled by the institution.
+  </p>
+
+  <h2>7. Data retention</h2>
+  <p>
+    Retention is controlled by the school/district (forms, spreadsheets, admin backends they operate).
+    The extension keeps limited local state (such as device id and last-known policy cache) on the device
+    to function offline and avoid losing configuration.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    For questions about deployment, data handling, or this policy, contact your
+    <strong>school or district IT administrator</strong> (the organization that installed and configured Banished).
+  </p>
+  <p>This privacy policy applies to the Banished Chrome extension.</p>
 
 </body>
 </html>
