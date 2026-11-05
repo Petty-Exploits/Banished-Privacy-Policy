@@ -14,7 +14,7 @@
 <body>
 
   <h1>Privacy Policy</h1>
-  <p><strong>Last updated:</strong> September 24, 2026</p>
+  <p><strong>Last updated:</strong> November 5, 2026</p>
 
   <h2>1. Overview</h2>
   <p>
@@ -44,6 +44,8 @@
     <li>Page URL/content signals needed to decide whether a page violates policy (proxies, patterns, titles, etc.).</li>
     <li>Policy settings from <strong>Chrome managed storage</strong> (Google Admin JSON), such as allow/block lists and feature toggles.</li>
     <li>Optional local features when enabled by policy (e.g. clipboard/anti-AI copy rules, bookmark cleanup, easter egg).</li>
+    <li>Proxy detection may inspect page scripts and runtime behavior for circumvention-tool signatures.</li>
+    <li>When enabled, click-hijack protection checks suspicious clicks, popups, and clickable overlays. Existing whitelist exemptions are respected.</li>
   </ul>
 
   <h3>3.2 Block event reporting (when a block occurs)</h3>
@@ -70,6 +72,7 @@
     <li>Send periodic heartbeats (online status, extension version, platform, policy version)</li>
     <li>Associate block events with a device for an admin “fleet” view</li>
     <li>Register for push messages so policy can refresh more quickly (e.g. FCM), when configured</li>
+    <li>Receive administrator-issued bookmark audit and cleanup commands and report their results (such as command status and bookmark details relevant to the audit).</li>
   </ul>
   <p>In that mode, the following may be processed by the district backend:</p>
   <ul>
@@ -77,6 +80,7 @@
     <li><strong>Google account email (when available):</strong> read via Chrome Identity from the signed-in profile (typical on managed Workspace Chromebooks). If unavailable (e.g. some personal/dev profiles), the fleet view falls back to the device id only. Email is used to help IT identify which user/device is online or generating blocks—not for advertising.</li>
     <li><strong>Push token</strong> (when push is configured), for policy refresh messages.</li>
     <li><strong>Block telemetry</strong> tied to that device (time, type/reason, sanitized URL, optional details).</li>
+    <li><strong>Bookmark command results</strong> when administrators use fleet bookmark features (such as audit findings, bookmark titles/URLs, and command completion status).</li>
   </ul>
   <p>
     Turning remote policy <strong>off</strong> stops heartbeats, remote policy fetch, push registration use, and API block telemetry.
@@ -100,6 +104,7 @@
     <li>Block and fleet data are intended for the <strong>deploying school/district</strong> and tools they operate (e.g. Google Forms, Google Sheets, Apps Script, Firebase Cloud Messaging if they enable push).</li>
     <li>Data is <strong>not</strong> sold or used for advertising.</li>
     <li>Infrastructure providers used by the district (Google services, etc.) process data under the district’s configuration and those providers’ terms.</li>
+    <li>District-configured fleet services may also use a Cloudflare-hosted backend to process policy, device status, and administrator command results.</li>
   </ul>
 
   <h2>6. Children’s privacy (K–12)</h2>
